@@ -42,12 +42,18 @@ public class HelloController {
     @Inject
     RxProxyHttpClient httpClient;
 
-    @Get(uri = "/")
-    public HttpResponse<?> root(Session session) {
+    @Get(uri = "/bug")
+    public HttpResponse<?> bug(Session session) {
         session.put("foo", "bar");
         URI uri = UriBuilder.of("http://localhost:8080/hello/foo").build();
         MutableHttpRequest<?> req = HttpRequest.GET(uri);
         return httpClient.proxy(req).blockingFirst();
+    }
+
+    @Get(uri = "/no-bug")
+    public HttpResponse<?> noBug(Session session) {
+        session.put("foo", "bar");
+        return HttpResponse.ok("No bug here");
     }
 
     @Get(uri = "/hello/{name}", produces = MediaType.TEXT_PLAIN)
