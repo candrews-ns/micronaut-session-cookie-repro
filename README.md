@@ -1,5 +1,10 @@
 Repro App for https://github.com/micronaut-projects/micronaut-core/issues/3936
 ==============================================================================
+
+This repo is taken from the Micronaut project's examples repo:
+
+  https://github.com/micronaut-projects/micronaut-examples/tree/master/hello-world-java
+
 ```
 $ ./gradlew run
 ```
